@@ -1,0 +1,10 @@
+.Login {text-align: right;}
+.welcome_user {text-align: right;}
+.title {text-align: center;}
+#login_user {text-align: center;}
+#login_customer {text-align: center;}
+.footer {
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+}
