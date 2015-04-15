@@ -2,7 +2,7 @@
 
 namespace Mvc\Model;
 
-class UserModel
+class CustomerModel
 {
 
     private static $db = null;
@@ -31,7 +31,7 @@ class UserModel
     //*檢查登入資料是否已存在
     public function loginCheck($gtPost)
     {
-        $sql = self::$db->prepare("SELECT name FROM user
+        $sql = self::$db->prepare("SELECT name FROM customer
         where name='".$gtPost['name']."' and password='".$gtPost['password']."' "
         );
         if ($sql->execute()) {
@@ -51,14 +51,16 @@ class UserModel
             $_name = $gtcPost['name'];
             $_password = $gtcPost['password'];
             $_mobilephone = $gtcPost['mobilephone'];
+            $_address = $gtcPost['address'];
             $sql = self::$db->prepare(
-                "INSERT INTO user (name, password, mobilephone)
-            VALUES (:name, :password, :mobilephone)"
+                "INSERT INTO customer (name, password, mobilephone, address)
+            VALUES (:name, :password, :mobilephone, :address)"
             );
             $sql->bindvalue(':name', $_name);
             $sql->bindvalue(':password', $_password);
             $sql->bindvalue(':mobilephone', $_mobilephone);
-            return ($sql->execute()) ? $_name : '失敗';
+            $sql->bindvalue(':address', $_address);
+            return ($sql->execute()) ? $_name : '失敗' ;
         } catch (PDOException $e) {
             return 'error in insert!';
         }
@@ -67,7 +69,7 @@ class UserModel
     public function createCheck($name)
     {
         $sql = self::$db->query(
-            "SELECT name FROM user
+            "SELECT name FROM customer
         where name='".$name."'"
         );
         if ($sql->fetch()) {

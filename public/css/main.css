@@ -1,8 +1,6 @@
-.Login {text-align: right;}
-.welcome_user {text-align: right;}
-.title {text-align: center;}
-#login_user {text-align: center;}
-#login_customer {text-align: center;}
+#title {text-align: right;}
+#m {text-align: center;}
+#upload {text-align: left;}
 .footer {
     position: absolute;
     bottom: 0px;

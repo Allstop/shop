@@ -11,5 +11,6 @@ class Controller
     {
         self::$app = new Data();
         self::$app->getPost();
+        self::$app->getCrPost();
     }
 }
